@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>INIntentsSupported</key>
+	<array>
+		<string>Intent</string>
+	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>BEACON needs microphone access to detect SOS keywords for emergency situations. This audio is processed entirely on-device and is never recorded or transmitted.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>BEACON needs location access to show your device location on Apple Maps for emergency situations and device tracking.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>BEACON needs Bluetooth access to connect to your ESP32-C3 wearable device for continuous health monitoring (heart rate, fall detection, and emergency alerts).</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>BEACON uses Bluetooth to communicate with your ESP32-C3 health monitoring device.</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchScreenBackground</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<true/>
+	</dict>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+</dict>
+</plist>
