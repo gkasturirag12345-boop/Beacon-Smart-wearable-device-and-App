@@ -1,0 +1,142 @@
+/*
+ * English Localization
+ * BEACON Health Monitoring App
+ */
+
+// MARK: - General
+"app_name" = "BEACON";
+"ok" = "OK";
+"cancel" = "Cancel";
+"done" = "Done";
+"save" = "Save";
+"delete" = "Delete";
+"retry" = "Retry";
+"refresh" = "Refresh";
+"close" = "Close";
+"back" = "Back";
+
+// MARK: - Tab Bar
+"tab_dashboard" = "Dashboard";
+"tab_heart_rate" = "Heart Rate";
+"tab_fall_detection" = "Fall Detection";
+"tab_bluetooth" = "Bluetooth";
+"tab_test_mode" = "Test Mode";
+"tab_settings" = "Settings";
+
+// MARK: - Dashboard
+"dashboard_title" = "Health Dashboard";
+"dashboard_welcome" = "Welcome to BEACON";
+"dashboard_status" = "Status";
+"dashboard_activity" = "Recent Activity";
+"dashboard_no_activity" = "No recent activity";
+"dashboard_connection_status" = "Connection Status";
+
+// MARK: - Heart Rate
+"heart_rate_title" = "Heart Rate";
+"heart_rate_current" = "Current Heart Rate";
+"heart_rate_bpm" = "BPM";
+"heart_rate_zone_very_low" = "Very Low";
+"heart_rate_zone_low" = "Low";
+"heart_rate_zone_normal" = "Normal";
+"heart_rate_zone_elevated" = "Elevated";
+"heart_rate_zone_high" = "High";
+"heart_rate_alert" = "Heart Rate Variation Detected";
+"heart_rate_alert_message" = "Monitor closely and consult a healthcare professional if persistent";
+"heart_rate_no_data" = "No Heart Rate Data";
+"heart_rate_waiting" = "Waiting for heart rate data...";
+"heart_rate_average" = "Average";
+"heart_rate_min" = "Min";
+"heart_rate_max" = "Max";
+"heart_rate_history" = "Heart Rate History";
+
+// MARK: - Fall Detection
+"fall_detection_title" = "Fall Detection";
+"fall_detection_active" = "ACTIVE";
+"fall_detection_paused" = "PAUSED";
+"fall_detection_monitoring" = "Monitoring";
+"fall_detection_status" = "System is actively monitoring for falls";
+"fall_detection_paused_status" = "Fall detection is currently paused";
+"fall_detected" = "FALL DETECTED!";
+"fall_emergency_active" = "Emergency alert active";
+"fall_im_ok" = "I'm OK - Cancel Alert";
+"fall_confirm" = "Are you sure you're okay? This will cancel the emergency alert.";
+"fall_cancelled" = "Fall alert cancelled. Stay safe!";
+"fall_impact" = "Impact";
+"fall_location" = "Location";
+"fall_time" = "Time";
+
+// MARK: - Bluetooth
+"bluetooth_title" = "Bluetooth";
+"bluetooth_connected" = "Connected";
+"bluetooth_disconnected" = "Disconnected";
+"bluetooth_scanning" = "Scanning for devices...";
+"bluetooth_scan" = "Scan for Devices";
+"bluetooth_stop_scanning" = "Stop Scanning";
+"bluetooth_disconnect" = "Disconnect Device";
+"bluetooth_available_devices" = "Available Devices";
+"bluetooth_no_devices" = "No Devices Found";
+"bluetooth_turn_on_device" = "Turn on your ESP32-C3 device and tap 'Scan for Devices' to begin.";
+"bluetooth_unknown_device" = "Unknown Device";
+"bluetooth_connected_device" = "Connected Device";
+"bluetooth_make_sure_powered" = "Make sure your device is powered on";
+
+
+// MARK: - Settings
+"settings_title" = "Settings";
+"settings_appearance" = "Appearance";
+"settings_appearance_light" = "Light";
+"settings_appearance_dark" = "Dark";
+"settings_appearance_system" = "System";
+"settings_language" = "Language";
+"settings_preferences" = "Preferences";
+"settings_notifications" = "Notifications";
+"settings_notifications_desc" = "Receive health alerts and updates";
+"settings_haptic" = "Haptic Feedback";
+"settings_haptic_desc" = "Feel vibrations on interactions";
+"settings_about" = "About";
+"settings_privacy" = "Privacy Policy";
+"settings_terms" = "Terms of Service";
+"settings_support" = "Contact Support";
+"settings_rate" = "Rate the App";
+"settings_debug" = "Debug";
+"settings_debug_logs" = "Debug Logs";
+"settings_debug_logs_desc" = "Show detailed console logs";
+"settings_reset" = "Reset All Settings";
+"settings_reset_confirm" = "This will reset all settings to their default values.";
+"settings_version" = "Version";
+
+// MARK: - Alerts
+"alert_high_heart_rate" = "High Heart Rate Detected";
+"alert_low_heart_rate" = "Low Heart Rate Detected";
+"alert_fall_detected" = "Fall Detected";
+"alert_device_disconnected" = "Device Disconnected";
+"alert_connection_lost" = "Connection Lost";
+
+// MARK: - Status
+"status_connected" = "Connected";
+"status_disconnected" = "Disconnected";
+"status_connecting" = "Connecting";
+"status_active" = "Active";
+"status_inactive" = "Inactive";
+"status_live" = "Live";
+"status_offline" = "Offline";
+
+// MARK: - Errors
+"error_bluetooth_unavailable" = "Bluetooth is unavailable";
+"error_bluetooth_unauthorized" = "Bluetooth access is not authorized";
+"error_connection_failed" = "Connection failed";
+"error_no_data" = "No data available";
+"error_unknown" = "An unknown error occurred";
+
+// MARK: - Time
+"time_updated" = "Updated";
+"time_just_now" = "Just now";
+"time_minutes_ago" = "%d minutes ago";
+"time_hours_ago" = "%d hours ago";
+"time_days_ago" = "%d days ago";
+
+// MARK: - About
+"about_title" = "About BEACON";
+"about_description" = "BEACON is a comprehensive health monitoring system that tracks heart rate, detects falls, and provides real-time alerts for elderly care and safety monitoring.";
+"about_made_with_love" = "Made with ❤️";
+"about_copyright" = "© 2025 BEACON Project";
