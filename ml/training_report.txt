@@ -1,0 +1,104 @@
+═══════════════════════════════════════════════════════════════
+            SOS KEYWORD CLASSIFIER TRAINING REPORT
+═══════════════════════════════════════════════════════════════
+
+Model: SOSKeywordClassifier
+Training Date: 2025-11-11T03:34:05Z
+Training Duration: 4m 49s
+
+───────────────────────────────────────────────────────────────
+TRAINING CONFIGURATION
+───────────────────────────────────────────────────────────────
+
+Max Iterations: 50
+Model Type: MLSoundClassifier
+Sample Rate: 22,050 Hz
+Classes: sos, oh_ess, noise, unknown
+
+───────────────────────────────────────────────────────────────
+PERFORMANCE METRICS
+───────────────────────────────────────────────────────────────
+
+Training Accuracy:   95.53%
+Validation Accuracy: 93.15%
+Test Accuracy:       90.74%
+
+───────────────────────────────────────────────────────────────
+AUGMENTATION TECHNIQUES APPLIED
+───────────────────────────────────────────────────────────────
+
+SOS Class (AGGRESSIVE augmentation):
+  ✓ Speed variations (0.8x - 1.2x)
+  ✓ Pitch shifting (-2 to +2 semitones)
+  ✓ Volume variations (0.6x - 1.4x)
+  ✓ Stress simulation (panic voice)
+  ✓ Mumbling simulation (unclear articulation)
+  ✓ Slurring simulation (slurred speech)
+  ✓ Background noise (real-world conditions)
+  ✓ Combined augmentations
+
+OH_ESS Class (MODERATE augmentation):
+  ✓ Speed variations
+  ✓ Pitch shifting
+  ✓ Background noise
+
+NOISE/UNKNOWN Classes (LIGHT augmentation):
+  ✓ Volume variations
+  ✓ Background noise
+
+───────────────────────────────────────────────────────────────
+DEPLOYMENT INSTRUCTIONS
+───────────────────────────────────────────────────────────────
+
+1. Copy SOSKeywordClassifier.mlmodel to Xcode project:
+   • Drag into BEACON6/Resources/ folder
+   • Ensure "Target Membership" includes BEACON6
+
+2. Verify model is loaded correctly in KeywordSpotter.swift:
+   • Check Bundle.main.url(forResource: "SOSKeywordClassifier", ...)
+
+3. Clean build folder (Cmd+Shift+K) and rebuild
+
+4. Test on device with various SOS pronunciations:
+   • Clear "ess-oh-ess" (baseline)
+   • Fast/rushed "sos"
+   • Mumbled "ssoss"
+   • Slurred "soooossss"
+   • Stressed/panic voice
+   • Quiet whisper
+   • Loud shout
+
+5. Monitor detection confidence and false positive rate
+
+───────────────────────────────────────────────────────────────
+EXPECTED IMPROVEMENTS
+───────────────────────────────────────────────────────────────
+
+Before Augmentation:
+  • Only detects clear "ess-oh-ess" pronunciation
+  • Misses stressed/mumbled/slurred speech
+  • High false negative rate in real emergencies
+
+After Augmentation:
+  • Detects varied pronunciations (fast/slow/unclear)
+  • Handles stressed/panic voice characteristics
+  • Improved recall without sacrificing precision
+  • Better generalization to real-world conditions
+
+───────────────────────────────────────────────────────────────
+TROUBLESHOOTING
+───────────────────────────────────────────────────────────────
+
+If false positives increase:
+  • Adjust detectionThreshold in KeywordSpotter.swift (0.6 → 0.7)
+  • Increase confidenceDeltaThreshold (0.15 → 0.2)
+  • Verify oh_ess class wasn't over-augmented
+
+If false negatives persist:
+  • Add more augmented stress/mumble samples to training
+  • Lower detectionThreshold (0.6 → 0.55)
+  • Check microphone audio quality
+
+═══════════════════════════════════════════════════════════════
+END OF REPORT
+═══════════════════════════════════════════════════════════════

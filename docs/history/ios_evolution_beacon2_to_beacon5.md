@@ -1,3 +1,7 @@
+> **Historical document (November 2025).** It describes the BEACON2 to BEACON5 iOS app. The Wi-Fi provisioning and
+> network coordination it describes were removed in the final BLE-only version. See `../../README.md` for the
+> current system.
+
 # BEACON iOS App: Evolution Report
 ## From Phase 1 (BEACON2) to Phase 2 (BEACON5)
 

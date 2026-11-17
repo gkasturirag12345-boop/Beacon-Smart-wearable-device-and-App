@@ -325,7 +325,7 @@ struct PillButton: View {
                 Text("Buttons with Icons")
                     .font(AppTheme.Typography.sectionTitle)
 
-                ModernButton(title: "Connect", icon: "wifi", style: .primary) {}
+                ModernButton(title: "Connect", icon: "antenna.radiowaves.left.and.right", style: .primary) {}
                 ModernButton(title: "Disconnect", icon: "xmark", style: .destructive) {}
                 ModernButton(title: "Loading...", icon: "arrow.clockwise", style: .primary, isLoading: true) {}
                 ModernButton(title: "Disabled", icon: "lock.fill", style: .primary, isDisabled: true) {}

@@ -1,0 +1,15 @@
+# Reproducible build (arduino-cli >= 0.30): arduino-cli compile --profile beacon
+# Versions are the ones this sketch was verified to compile with (2026-11-18).
+profiles:
+  beacon:
+    fqbn: esp32:esp32:esp32c3
+    platforms:
+      - platform: esp32:esp32 (3.3.1)
+    libraries:
+      - NimBLE-Arduino (2.3.6)
+      - Adafruit BNO08x (1.2.5)
+      - Adafruit VCNL4040 (1.2.0)
+      - Adafruit BusIO (1.17.4)
+      - Adafruit Unified Sensor (1.1.15)
+      - SparkFun MAX3010x Pulse and Proximity Sensor Library (1.1.2)
+default_profile: beacon

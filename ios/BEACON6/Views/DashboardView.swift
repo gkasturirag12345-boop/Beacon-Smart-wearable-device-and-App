@@ -10,7 +10,6 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject var healthService: HealthMonitoringService
     @StateObject private var locationService = LocationService.shared
-    @StateObject private var networkCoordinator = NetworkCoordinator.shared
 
     @State private var currentHeartRate: HeartRateData?
     @State private var fallStatus: FallDetectionEvent?
@@ -49,7 +48,7 @@ struct DashboardView: View {
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     ConnectionStatusBadge(
-                        mode: networkCoordinator.currentMode,
+                        mode: connectionMode,
                         isConnected: healthService.isConnected
                     )
                 }
@@ -162,11 +161,11 @@ struct DashboardView: View {
 
             // Network Mode Card
             InfoCard(
-                icon: networkCoordinator.currentMode.iconName,
+                icon: connectionMode.iconName,
                 iconColor: networkModeColor,
                 title: "Connection",
-                value: networkCoordinator.currentMode.displayName,
-                subtitle: networkCoordinator.isTransitioning ? "Switching..." : nil
+                value: connectionMode.displayName,
+                subtitle: nil
             )
         }
     }
@@ -344,9 +343,12 @@ struct DashboardView: View {
         }
     }
 
+    private var connectionMode: ConnectionMode {
+        ConnectionMode.current(isConnected: healthService.isConnected)
+    }
+
     private var networkModeColor: Color {
-        switch networkCoordinator.currentMode {
-        case .wifi: return AppTheme.Colors.wifi
+        switch connectionMode {
         case .ble: return AppTheme.Colors.bluetooth
         case .offline: return AppTheme.Colors.textSecondary
         }

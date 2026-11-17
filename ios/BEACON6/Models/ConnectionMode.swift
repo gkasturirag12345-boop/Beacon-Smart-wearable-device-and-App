@@ -2,15 +2,18 @@
 //  ConnectionMode.swift
 //  BEACON
 //
-//  Connection mode enum for network coordination
+//  Connection mode shown in the UI. BEACON is BLE-only: the mode follows the BLE link state.
 //
 
 import Foundation
 
 enum ConnectionMode: String, Codable {
-    case wifi = "WiFi"
     case ble = "BLE"
     case offline = "Offline"
+
+    static func current(isConnected: Bool) -> ConnectionMode {
+        isConnected ? .ble : .offline
+    }
 
     var displayName: String {
         return self.rawValue
@@ -18,8 +21,6 @@ enum ConnectionMode: String, Codable {
 
     var iconName: String {
         switch self {
-        case .wifi:
-            return "wifi"
         case .ble:
             return "antenna.radiowaves.left.and.right"
         case .offline:
@@ -29,8 +30,6 @@ enum ConnectionMode: String, Codable {
 
     var color: String {
         switch self {
-        case .wifi:
-            return "green"
         case .ble:
             return "blue"
         case .offline:
@@ -40,8 +39,6 @@ enum ConnectionMode: String, Codable {
 
     var priority: Int {
         switch self {
-        case .wifi:
-            return 1  // Highest priority
         case .ble:
             return 2  // Fallback
         case .offline:

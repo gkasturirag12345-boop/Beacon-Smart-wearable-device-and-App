@@ -294,10 +294,10 @@ struct ActionCard: View {
             )
 
             ActionCard(
-                icon: "wifi.circle.fill",
+                icon: "antenna.radiowaves.left.and.right.circle.fill",
                 iconColor: .blue,
-                title: "WiFi Setup",
-                subtitle: "Connect device to your network",
+                title: "Connect Wearable",
+                subtitle: "Pair the BEACON device over Bluetooth",
                 buttonText: "Configure"
             ) {
                 print("Action tapped")

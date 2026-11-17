@@ -240,7 +240,7 @@ struct EmptyStateView: View {
     }
 }
 
-/// Connecting state (for BLE/WiFi)
+/// Connecting state (BLE)
 struct ConnectingView: View {
     let deviceName: String
     let connectionType: String
@@ -266,7 +266,7 @@ struct ConnectingView: View {
                 }
 
                 // Center icon
-                Image(systemName: connectionType == "WiFi" ? "wifi" : "antenna.radiowaves.left.and.right")
+                Image(systemName: "antenna.radiowaves.left.and.right")
                     .font(.system(size: 50))
                     .foregroundColor(AppTheme.Colors.primary)
             }

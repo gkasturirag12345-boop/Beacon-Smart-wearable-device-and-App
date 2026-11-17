@@ -16,7 +16,6 @@ class BLEManager: NSObject, ObservableObject {
     @Published var discoveredDevices: [CBPeripheral] = []
     @Published var connectedDevice: CBPeripheral?
     @Published var connectionStatus = "Disconnected"
-    @Published var wifiCharacteristicsReady = false  // NEW: Indicates WiFi provisioning ready
 
     // MARK: - BLE Properties
     private var centralManager: CBCentralManager!
@@ -27,13 +26,7 @@ class BLEManager: NSObject, ObservableObject {
     private var controlCharacteristic: CBCharacteristic?  // NEW: Control command characteristic
     private var audioCharacteristic: CBCharacteristic?  // Audio streaming from ESP32 mic
 
-    // WiFi Provisioning Characteristics
-    private var wifiSSIDCharacteristic: CBCharacteristic?
-    private var wifiPasswordCharacteristic: CBCharacteristic?
-    private var wifiIPCharacteristic: CBCharacteristic?
-    private var wifiStatusCharacteristic: CBCharacteristic?
-
-    // MARK: - UUIDs (Match ESP32-C3 beacon5.ino firmware - Stage 1 Unified Specification)
+    // MARK: - UUIDs (match firmware/Code_that_works2 BLEManager / Config.h)
     // Service UUID - Main health monitoring service
     private let serviceUUID = CBUUID(string: "12345678-9012-3456-7890-1234567890AB")
 
@@ -42,13 +35,6 @@ class BLEManager: NSObject, ObservableObject {
     private let alertCharacteristicUUID = CBUUID(string: "12345678-9012-3456-7890-1234567890AD") // AlertStatus (Notify/Read)
     private let controlCharacteristicUUID = CBUUID(string: "12345678-9012-3456-7890-1234567890AE") // ControlCommand (Write)
     private let audioCharacteristicUUID = CBUUID(string: "12345678-9012-3456-7890-1234567890AF") // Audio Stream (Notify/Read)
-
-    // WiFi Provisioning Service UUIDs (Match ESP32-C3 wifi_manager.h)
-    private let wifiServiceUUID = CBUUID(string: "87654321-9012-3456-7890-ABCDEF123456")
-    private let wifiSSIDCharacteristicUUID = CBUUID(string: "87654321-9012-3456-7890-ABCDEF123457") // WiFi SSID (Write)
-    private let wifiPasswordCharacteristicUUID = CBUUID(string: "87654321-9012-3456-7890-ABCDEF123458") // WiFi Password (Write)
-    private let wifiIPCharacteristicUUID = CBUUID(string: "87654321-9012-3456-7890-ABCDEF123459") // WiFi IP Address (Notify/Read)
-    private let wifiStatusCharacteristicUUID = CBUUID(string: "87654321-9012-3456-7890-ABCDEF12345A") // WiFi Status (Notify/Read)
 
     // MARK: - Callbacks
     var onHeartRateReceived: ((Double) -> Void)?
@@ -238,16 +224,11 @@ extension BLEManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         isConnected = false
         connectedDevice = nil
-        wifiCharacteristicsReady = false
         heartRateCharacteristic = nil
         fallDetectionCharacteristic = nil
         sosAlertCharacteristic = nil
         controlCharacteristic = nil
         audioCharacteristic = nil
-        wifiSSIDCharacteristic = nil
-        wifiPasswordCharacteristic = nil
-        wifiIPCharacteristic = nil
-        wifiStatusCharacteristic = nil
 
         if let error = error {
             print("[BLE] Unexpected disconnection: \(error.localizedDescription)")
@@ -348,51 +329,6 @@ extension BLEManager: CBPeripheralDelegate {
                     peripheral.setNotifyValue(true, for: characteristic)
                     print("[BLE] 🎤 Subscribed to audio stream from ESP32 microphone (16kHz, 16-bit)")
                 }
-            }
-
-            // WiFi Provisioning Characteristics
-            if characteristic.uuid == wifiSSIDCharacteristicUUID {
-                wifiSSIDCharacteristic = characteristic
-                if characteristic.properties.contains(.write) {
-                    print("[BLE] WiFi SSID characteristic ready (Write enabled)")
-                }
-            }
-
-            if characteristic.uuid == wifiPasswordCharacteristicUUID {
-                wifiPasswordCharacteristic = characteristic
-                if characteristic.properties.contains(.write) {
-                    print("[BLE] WiFi Password characteristic ready (Write enabled)")
-                }
-            }
-
-            if characteristic.uuid == wifiIPCharacteristicUUID {
-                wifiIPCharacteristic = characteristic
-                if characteristic.properties.contains(.notify) {
-                    peripheral.setNotifyValue(true, for: characteristic)
-                    print("[BLE] Subscribed to WiFi IP address notifications")
-                }
-            }
-
-            if characteristic.uuid == wifiStatusCharacteristicUUID {
-                wifiStatusCharacteristic = characteristic
-                if characteristic.properties.contains(.notify) {
-                    peripheral.setNotifyValue(true, for: characteristic)
-                    print("[BLE] Subscribed to WiFi status notifications")
-                }
-            }
-        }
-
-        // Setup WiFi Provisioning Service with all discovered characteristics
-        if service.uuid == wifiServiceUUID {
-            WiFiProvisioningService.shared.setupWithPeripheral(peripheral, characteristics: characteristics)
-
-            // Add delay to ensure subscriptions are fully active before allowing provisioning
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-                self?.wifiCharacteristicsReady = true
-                print("========================================")
-                print("[BLE] ✅ WiFi characteristics READY for provisioning")
-                print("[BLE] All subscriptions active and stable")
-                print("========================================")
             }
         }
     }
@@ -498,22 +434,6 @@ extension BLEManager: CBPeripheralDelegate {
         if characteristic.uuid == alertCharacteristicUUID {
             print("[BLE RX] 🔍 Processing ALERT characteristic...")
             parseAlertString(from: data)
-        }
-
-        // Parse WiFi IP address notification
-        if characteristic.uuid == wifiIPCharacteristicUUID {
-            if let ipAddress = String(data: data, encoding: .utf8) {
-                print("[BLE RX] ✅ WiFi IP Address received: \(ipAddress)")
-            }
-            WiFiProvisioningService.shared.handleWiFiIPUpdate(data)
-        }
-
-        // Parse WiFi status notification
-        if characteristic.uuid == wifiStatusCharacteristicUUID {
-            if let status = String(data: data, encoding: .utf8) {
-                print("[BLE RX] ✅ WiFi Status: \(status)")
-            }
-            WiFiProvisioningService.shared.handleWiFiStatusUpdate(data)
         }
 
         // Handle audio stream data (ESP32 I2S microphone)

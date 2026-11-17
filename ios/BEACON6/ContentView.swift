@@ -14,7 +14,6 @@ import UIKit
 struct ContentView: View {
     @StateObject private var healthService = HealthMonitoringService.shared
     @StateObject private var notificationService = NotificationService.shared
-    @StateObject private var networkCoordinator = NetworkCoordinator.shared
     @State private var selectedTab = 0
 
     var body: some View {
@@ -42,13 +41,6 @@ struct ContentView: View {
                     Label("Fall Detection", systemImage: "figure.fall")
                 }
                 .tag(2)
-
-            // WiFi Setup (NEW)
-            WiFiSetupViewModern()
-                .tabItem {
-                    Label("WiFi Setup", systemImage: "wifi")
-                }
-                .tag(3)
 
             // Test Mode (for development)
             TestModeView()
@@ -81,7 +73,6 @@ struct ContentView: View {
             .environmentObject(healthService)
             .onAppear {
                 setupNotifications()
-                networkCoordinator.initialize()
             }
 
             // SOS Alert Banner Overlay (appears on top of all tabs)
@@ -100,9 +91,7 @@ struct ContentView: View {
     }
 
     private func getConnectionBadge() -> String {
-        switch networkCoordinator.currentMode {
-        case .wifi:
-            return "WiFi"
+        switch ConnectionMode.current(isConnected: healthService.isConnected) {
         case .ble:
             return "BLE"
         case .offline:

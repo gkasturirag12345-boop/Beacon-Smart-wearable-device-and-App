@@ -1,0 +1,44 @@
+{
+  "classLabels" : [
+    "sos",
+    "oh_ess",
+    "noise",
+    "unknown"
+  ],
+  "classMetrics" : {
+    "noise" : {
+      "f1Score" : 0,
+      "precision" : 0,
+      "recall" : 0,
+      "support" : 0
+    },
+    "oh_ess" : {
+      "f1Score" : 0,
+      "precision" : 0,
+      "recall" : 0,
+      "support" : 0
+    },
+    "sos" : {
+      "f1Score" : 0,
+      "precision" : 0,
+      "recall" : 0,
+      "support" : 0
+    },
+    "unknown" : {
+      "f1Score" : 0,
+      "precision" : 0,
+      "recall" : 0,
+      "support" : 0
+    }
+  },
+  "confusionMatrix" : [
+
+  ],
+  "maxIterations" : 50,
+  "modelName" : "SOSKeywordClassifier",
+  "testingAccuracy" : 0.9074197860962567,
+  "trainingAccuracy" : 0.9552634113454685,
+  "trainingDate" : "2025-11-11T03:34:05Z",
+  "trainingDuration" : 289.08946192264557,
+  "validationAccuracy" : 0.9314586994727593
+}

@@ -31,7 +31,6 @@ struct AppTheme {
         // Feature-specific colors
         static let heartRate = Color.pink
         static let bluetooth = Color.blue
-        static let wifi = Color.green
         static let fallAlert = Color.red.opacity(0.85)
 
         // Text colors

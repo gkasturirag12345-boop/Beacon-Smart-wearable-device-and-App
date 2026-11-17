@@ -69,8 +69,6 @@ struct ConnectionStatusBadge: View {
 
     private var statusColor: Color {
         switch mode {
-        case .wifi:
-            return AppTheme.Colors.wifi
         case .ble:
             return AppTheme.Colors.bluetooth
         case .offline:
@@ -283,7 +281,6 @@ struct PulseDot: View {
                     .font(AppTheme.Typography.sectionTitle)
 
                 HStack(spacing: 12) {
-                    ConnectionStatusBadge(mode: .wifi, isConnected: true)
                     ConnectionStatusBadge(mode: .ble, isConnected: true)
                     ConnectionStatusBadge(mode: .offline, isConnected: false)
                 }
