@@ -1,0 +1,14 @@
+.DS_Store
+# Xcode user state and build output
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.pbxproj.*
+# Core ML model: generated from a dataset whose provenance is not cleared for publication (see ml/README.md)
+*.mlmodel
+*.mlmodel.backup
+*.mlpackage/
+# datasets and Edge Impulse exports never belong here
+ml/datasets/
+edge-impulse-sdk/
