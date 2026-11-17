@@ -1,3 +1,5 @@
+![Project banner (decorative)](docs/images/banner.svg)
+
 # BEACON: Smart Wearable for Fall Detection and Emergency Alerts
 
 A wrist-worn ESP32-C3 device and a SwiftUI iPhone app, connected only over Bluetooth Low Energy:
