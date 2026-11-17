@@ -14,7 +14,16 @@ import UIKit
 struct ContentView: View {
     @StateObject private var healthService = HealthMonitoringService.shared
     @StateObject private var notificationService = NotificationService.shared
-    @State private var selectedTab = 0
+    @State private var selectedTab = ContentView.launchTab
+
+    #if DEBUG
+    // Screenshot and demo hooks (Debug builds only): -initialTab N opens a tab, -simulate YES starts TestSimulator.
+    private static var launchTab: Int { UserDefaults.standard.integer(forKey: "initialTab") }
+    private static var launchSimulation: Bool { UserDefaults.standard.bool(forKey: "simulate") }
+    #else
+    private static let launchTab = 0
+    private static let launchSimulation = false
+    #endif
 
     var body: some View {
         ZStack {
@@ -73,6 +82,7 @@ struct ContentView: View {
             .environmentObject(healthService)
             .onAppear {
                 setupNotifications()
+                if ContentView.launchSimulation { TestSimulator.shared.start() }
             }
 
             // SOS Alert Banner Overlay (appears on top of all tabs)

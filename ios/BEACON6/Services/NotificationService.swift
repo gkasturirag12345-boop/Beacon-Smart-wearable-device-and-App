@@ -23,6 +23,9 @@ class NotificationService: NSObject, ObservableObject {
 
     // MARK: - Authorization
     func requestAuthorization() async -> Bool {
+        #if DEBUG
+        if UserDefaults.standard.bool(forKey: "noPermissionPrompts") { return false }   // screenshot hook, see KeywordSpotter
+        #endif
         do {
             // Note: .criticalAlert requires special entitlement from Apple
             // Using standard options for now: .alert, .sound, .badge

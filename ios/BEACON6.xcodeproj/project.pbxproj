@@ -272,10 +272,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "BEACON6 needs Bluetooth to connect to your Arduino health monitoring device";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "BEACON6 needs Bluetooth to receive health data from your Arduino device";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Receive health data from device";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,10 +312,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "BEACON6 needs Bluetooth to connect to your Arduino health monitoring device";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "BEACON6 needs Bluetooth to receive health data from your Arduino device";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Receive health data from device";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

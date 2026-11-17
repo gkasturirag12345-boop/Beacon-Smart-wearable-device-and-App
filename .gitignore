@@ -12,3 +12,4 @@ build/
 # datasets and Edge Impulse exports never belong here
 ml/datasets/
 edge-impulse-sdk/
+*.mlmodelc/

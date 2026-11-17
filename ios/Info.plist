@@ -18,6 +18,8 @@
 	<array>
 		<string>Intent</string>
 	</array>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>BEACON uses Bluetooth to connect to your BEACON wearable and receive heart-rate, fall and SOS alerts.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>BEACON needs location access to show your device location on Apple Maps for emergency situations and device tracking.</string>
 	<key>NSMicrophoneUsageDescription</key>

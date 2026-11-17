@@ -128,6 +128,14 @@ class KeywordSpotter: NSObject, ObservableObject {
             return
         }
 
+        #if DEBUG
+        // Screenshot hook (Debug builds only): -noPermissionPrompts YES skips voice detection so no prompt covers the UI.
+        if UserDefaults.standard.bool(forKey: "noPermissionPrompts") {
+            NSLog("[KeywordSpotter] -noPermissionPrompts: voice detection not started")
+            return
+        }
+        #endif
+
         NSLog("[KeywordSpotter] Requesting microphone permission...")
 
         // Request microphone permission

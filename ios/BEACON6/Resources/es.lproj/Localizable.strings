@@ -19,7 +19,6 @@
 "tab_dashboard" = "Tablero";
 "tab_heart_rate" = "Ritmo Cardíaco";
 "tab_fall_detection" = "Detección de Caídas";
-"tab_wifi_setup" = "Configuración WiFi";
 "tab_bluetooth" = "Bluetooth";
 "tab_test_mode" = "Modo de Prueba";
 "tab_settings" = "Ajustes";
@@ -81,23 +80,6 @@
 "bluetooth_connected_device" = "Dispositivo Conectado";
 "bluetooth_make_sure_powered" = "Asegúrate de que tu dispositivo esté encendido";
 
-// MARK: - WiFi Setup
-"wifi_title" = "Configuración WiFi";
-"wifi_connection_status" = "Estado de Conexión";
-"wifi_scan_networks" = "Escanear Redes";
-"wifi_refresh" = "Actualizar Redes";
-"wifi_connect" = "Conectar";
-"wifi_connecting" = "Conectando...";
-"wifi_connected" = "Conectado";
-"wifi_failed" = "Conexión Fallida";
-"wifi_no_networks" = "No Se Encontraron Redes";
-"wifi_scanning" = "Buscando redes WiFi...";
-"wifi_enter_password" = "Ingresar Contraseña";
-"wifi_password" = "Contraseña";
-"wifi_secured" = "Segura";
-"wifi_open" = "Abierta";
-"wifi_saved_credentials" = "Credenciales Guardadas";
-"wifi_no_saved" = "Sin credenciales guardadas";
 
 // MARK: - Settings
 "settings_title" = "Ajustes";
